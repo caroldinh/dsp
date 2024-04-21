@@ -1,0 +1,217 @@
+/*
+ * BACKGROUND MUSIC CREDIT: 
+ * "Institutionalized" 8-bit cover by Chiptune Planet
+ * https://www.youtube.com/watch?v=gKCG_MEXK48
+ */
+
+import processing.sound.*;
+
+static final int NUM_LAYERS = 18;
+static final int BRICKS_PER_ROW = 3;
+static final int DPI = 72;
+static final int DIVIDER_WIDTH = 5;
+static final int FONT_SIZE = 48;
+static final int TITLE_FONT_SIZE = 72;
+static final int FRAME_RATE = 30;
+static final int SECONDS_PER_TURN = 10;
+static final int TEXT_MARGIN_SIZE = 5;
+
+static class Brick {
+  private static int WIDTH = 75;
+  private static int LENGTH = 3 * WIDTH;
+  private static int HEIGHT = LENGTH / 5;
+}
+
+static enum Player {
+  ARTIST,
+  INSTITUTION
+}
+
+Player currPlayer = Player.INSTITUTION;
+PFont mainFont, actionFont;
+boolean gameOver = false;
+SoundFile bricks, bgMusic, recording;
+
+static final String[] ARTIST_ACTIONS = {
+  "PURCHASE ART MATERIALS LOCALLY",
+  "PARTICIPATE IN LOCAL EXHIBITIONS",
+  "SAY 'NO' TO NFTS",
+  "RE-USE MATERIALS FROM OLD PROJECTS",
+  "KEEP YOUR SCRAP MATERIALS FOR REPURPOSING",
+  "GET FAMILIAR WITH BEST WASTE DISPOSAL PRACTICES",
+  "USE BIODEGRADABLE MATERIALS TO PACKAGE AND SHIP YOUR ARTWORK",
+  "INSTALL LED LIGHTS IN YOUR STUDIO SPACE",
+  "USE ENERGY-EFFICIENT APPLIANCES IN YOUR STUDIO SPACE",
+  "SCHEDULE AN ENERGY AUDIT OF YOUR STUDIO SPACE",
+  "USE A GREEN HOST FOR YOUR NET ART & ARTIST WEBSITE",
+  "PURCHASE ART SUPPLIES SECOND-HAND",
+  "PRINT ARTWORK FROM LOCAL PRINT SHOPS",
+  "POOL ART SUPPLIES WITH LOCAL ARTIST FRIENDS",
+  "USE YOUR PLATFORM TO ADVOCATE FOR INSTITUTIONAL CHANGE",
+  "DONATE UNWANTED SUPPLIES TO LOCAL SCHOOLS & THRIFT STORES",
+  "USE ENERGY-EFFICIENT APPLIANCES FOR ELECTRONIC INSTALLATIONS",
+};
+static final String[] INSTITUTION_ACTIONS = {
+  "CONVERT YOUR FACILITIES TO LED LIGHTING",
+  "PRIORITIZE LOCAL ARTISTS IN YOUR FACILITY",
+  "USE ECO-FRIENDLY PACKAGING WHEN SHIPPING ARTWORKS",
+  "ESTABLISH A SUSTAINABILITY TASK FORCE WITHIN YOUR ORGANIZATION",
+  "TRAIN YOUR EMPLOYEES ON SUSTAINABILITY",
+  "KEEP PUBLIC RECORD OF YOUR CARBON EMISSIONS",
+  "USE YOUR RESOURCES TO LOBBY FOR GREEN SYSTEMIC CHANGE",
+  "SET MEASURABLE GOALS TO REDUCE YOUR CARBON EMISSIONS",
+  "COMPLETE ANNUAL ENERGY AND WASTE AUDITS",
+  "GENERATE YOUR ELECTRICITY ON-SITE",
+  "KEEP YOUR BMS & HVAC SYSTEMS UP-TO-DATE",
+  "SHIP BY RAIL OR BY SEA INSTEAD OF BY AIR",
+  "PLAN YOUR SHIPPING SCHEDULES TO CONSOLIDATE FREIGHT",
+  "DIVEST FROM FOSSIL FUELS",
+  "INVEST IN ACTION INSTEAD OF CARBON OFFSETS",
+  "PLATFORM ARTISTS FROM CLIMATE-VULNERABLE COMMUNITIES",
+  "PRIORITIZE LOCAL OVER LONG-DISTANCE VISITORS",
+  "COMMUNICATE DIGITALLY TO AVOID BUSINESS TRAVEL"
+};
+
+String action = "";
+
+void settings() {
+  int canvasWidth = Brick.WIDTH * 6 + DIVIDER_WIDTH;
+  int canvasHeight = Brick.HEIGHT * NUM_LAYERS;
+  size(canvasWidth, canvasHeight);
+  bgMusic = new SoundFile(this, "institutionalized.mp3");
+}
+
+void setup() {
+  frameRate(FRAME_RATE);
+  actionFont = loadFont("Arial-BoldItalicMT-48.vlw");
+  mainFont = createFont("RubikBrokenFax-Regular.ttf", 96);
+  bricks = new SoundFile(this, "jenga.wav");
+  bgMusic.amp(0.1);
+  bgMusic.loop();
+  bgMusic.play();
+}
+
+void draw() {
+  
+  if (!gameOver) {
+  
+    if (action == "" || frameCount % (FRAME_RATE * SECONDS_PER_TURN) == 0) {
+      nextTurn();
+    }
+    
+    background(0);
+    stroke(0);
+    strokeWeight(1);
+    
+    // Draw face 1 bricks
+    if (currPlayer == Player.ARTIST) {
+      fill(0, 255, 255);
+    } else {
+      fill(255, 0, 255);
+    }
+    for (int layer = 0; layer < NUM_LAYERS; layer++) {
+      int layerStartY = layer * Brick.HEIGHT;
+      int layerStartX = 0;
+      if (layer % 2 == 0) {
+        rect(layerStartX, layerStartY, layerStartX + Brick.LENGTH, layerStartY + Brick.HEIGHT);
+      } else {
+        int brickStartX = layerStartX;
+        for (int brick = 0; brick < BRICKS_PER_ROW; brick++) {
+          rect(brickStartX, layerStartY, brickStartX + Brick.WIDTH, layerStartY + Brick.HEIGHT);
+          brickStartX += Brick.WIDTH;
+        }
+      }
+    }
+    
+    // Draw face 2 bricks
+    if (currPlayer == Player.ARTIST) {
+      fill(255, 0, 255);
+    } else {
+      fill(0, 255, 255);
+    }
+    for (int layer = 0; layer < NUM_LAYERS; layer++) {
+      int layerStartY = layer * Brick.HEIGHT;
+      int layerStartX = Brick.LENGTH + DIVIDER_WIDTH;
+      if (layer % 2 == 1) {
+        rect(layerStartX, layerStartY, Brick.LENGTH, Brick.HEIGHT);
+      } else {
+        int brickStartX = layerStartX;
+        for (int brick = 0; brick < BRICKS_PER_ROW; brick++) {
+          rect(brickStartX, layerStartY, Brick.WIDTH, Brick.HEIGHT);
+          brickStartX += Brick.WIDTH;
+        }
+      }
+    }
+    
+    noStroke();
+    fill(0, 0, 0);
+    rect(Brick.LENGTH, 0,  DIVIDER_WIDTH, height);
+    
+    if (currPlayer == Player.ARTIST) {
+      fill(0, 255, 255);
+      textFont(mainFont, TITLE_FONT_SIZE);
+      textLeading(TITLE_FONT_SIZE * 0.85);
+      text("A\nR\nT\nI\nS\nT\n'S", Brick.LENGTH + DIVIDER_WIDTH + TEXT_MARGIN_SIZE, 0, Brick.LENGTH, Brick.HEIGHT * NUM_LAYERS);
+      text("\n\nT\nU\nR\nN", Brick.LENGTH + DIVIDER_WIDTH + TITLE_FONT_SIZE + TEXT_MARGIN_SIZE, 0, Brick.LENGTH, Brick.HEIGHT * NUM_LAYERS);
+      
+      fill(0, 0, 0);
+      textFont(actionFont, FONT_SIZE);
+      textLeading(FONT_SIZE * 0.85);
+      text(action, 0, 0, Brick.LENGTH, Brick.HEIGHT * NUM_LAYERS);
+      
+    } else {
+      fill(0, 255, 255);
+      textFont(mainFont, TITLE_FONT_SIZE);
+      textLeading(TITLE_FONT_SIZE * 0.85);
+      text("I\nN\nS\nT\nI\nT\nU\nT\nI\nO\nN\n'S", TEXT_MARGIN_SIZE, 0, Brick.LENGTH, Brick.HEIGHT * NUM_LAYERS);
+      text("\n\n\n\n\nT\nU\nR\nN", TITLE_FONT_SIZE + TEXT_MARGIN_SIZE, 0, Brick.LENGTH, Brick.HEIGHT * NUM_LAYERS);
+      
+      fill(0, 0, 0);
+      textFont(actionFont, FONT_SIZE);
+      textLeading(FONT_SIZE * 0.85);
+      text(action, Brick.LENGTH + DIVIDER_WIDTH, 0, Brick.LENGTH, Brick.HEIGHT * NUM_LAYERS);
+    }
+  } else {
+    
+    background(255, 0, 255);
+    textAlign(CENTER, TOP);
+    if (frameCount % FRAME_RATE < (FRAME_RATE / 2)) {
+      fill(0, 255, 255);
+      textFont(mainFont, TITLE_FONT_SIZE * 2);
+      textLeading(TITLE_FONT_SIZE * 2 * 0.85);
+      text("GAME OVER", 0, 0, Brick.LENGTH * 2, Brick.HEIGHT * NUM_LAYERS);
+    }
+    
+    fill(0, 0, 0);
+    textFont(actionFont, FONT_SIZE * 1.5);
+    textLeading(FONT_SIZE * 1.5 * 0.85);
+    text("PLEASE UNPLUG THE PROJECTOR & RESET TOWER FOR THE NEXT PLAYER", 0, TITLE_FONT_SIZE * 4, Brick.LENGTH * 2, Brick.HEIGHT * NUM_LAYERS);
+    
+  }
+  
+}
+
+void nextTurn() {
+  if (currPlayer == Player.ARTIST) {
+    currPlayer = Player.INSTITUTION;
+    int actionNum = int(random(INSTITUTION_ACTIONS.length));
+    recording = new SoundFile(this, "institution/" + (actionNum + 1) + ".mp3");
+    action = INSTITUTION_ACTIONS[actionNum];
+    recording.play();
+  } else {
+    currPlayer = Player.ARTIST;
+    int actionNum = int(random(ARTIST_ACTIONS.length));
+    recording = new SoundFile(this, "artist/" + (actionNum + 1) + ".mp3");
+    action = ARTIST_ACTIONS[actionNum];
+    recording.play();
+  }
+}
+
+
+// Simulate game over
+void mousePressed() {
+  recording.stop();
+  bgMusic.stop();
+  bricks.play();
+  gameOver = true;
+}

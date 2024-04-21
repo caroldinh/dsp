@@ -1,7 +1,7 @@
 ---
 layout: page
 image:
-  path: images/krz.png
+  path: assets/images/krz.png
 ---
 
 # Performance & Notation of Memory in *Kentucky Route Zero*

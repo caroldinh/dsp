@@ -32,6 +32,9 @@
 /* ========================================================================== List Mixins ========================================================================== */
 /* ========================================================================== Text Truncate Mixin Requires inline-block or block for proper styling ========================================================================== */
 /*! Lity - v3.0.0-dev - 2017-07-17 http://sorgalla.com/lity/ Copyright (c) 2015-2017 Jan Sorgalla; Licensed MIT */
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 .lity { z-index: 9990; position: fixed; top: 0; right: 0; bottom: 0; left: 0; white-space: nowrap; background: #0b0b0b; background: rgba(0, 0, 0, 0.9); outline: none !important; opacity: 0; -webkit-transition: opacity .3s ease; -o-transition: opacity .3s ease; transition: opacity .3s ease; }
 
 .lity.lity-opened { opacity: 1; }
@@ -80,7 +83,7 @@
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /** 1. Change the default font family in all browsers (opinionated). 2. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS. */
 /* Document ========================================================================== */
-html { font-family: "Source Sans Pro", sans-serif; /* 1 */ box-sizing: border-box; -ms-text-size-adjust: 100%; /* 2 */ -webkit-text-size-adjust: 100%; /* 2 */ }
+html { font-family: "Alegreya", serif; /* 1 */ box-sizing: border-box; -ms-text-size-adjust: 100%; /* 2 */ -webkit-text-size-adjust: 100%; /* 2 */ }
 
 *, *::before, *::after { box-sizing: inherit; }
 
@@ -246,8 +249,7 @@ code, kbd, samp, pre { font-family: Menlo, Consolas, Monaco, "Courier New", Cour
 
 kbd { display: inline-block; margin: 0 0.125em; padding: 0.125em 0.5em; color: #000; border: 1px solid #cccccc; border-radius: 3px; background-color: #f7f7f7; font-size: 85%; text-shadow: 0 1px 0 #fff; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), inset 0 0 0 2px #fff; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), inset 0 0 0 2px #fff; }
 
-h1, h2, h3, h4, h5, h6 { font-family: "Source Sans Pro", sans-serif; text-rendering: optimizeLegibility; /* enable common ligatures and kerning */ }
-
+h1, h2, h3, h4, h5, h6 { font-family: "Ubuntu Mono", monospace; text-transform: uppercase; }
 h1 { font-size: 20.7385152499px; }
 
 @media screen and (min-width: 320px) { h1 { font-size: calc(20.7385152499px + 12.4390847501 * ((100vw - 320px) / 960)); } }
@@ -328,14 +330,15 @@ tr, td, th { vertical-align: middle; }
 .site-nav { display: flex; flex-direction: row; margin-bottom: 1em; text-align: center;
     background-color: black;
     padding-bottom: 4px;
-    width: 100vw;
+    width: 100%;
  }
 
-.site-nav ul { display: block; margin: auto; padding: 0.25em 0.75em; list-style: none; border-radius: 0 0 0.5rem 0.5rem; }
+.site-nav ul { display: block; margin: auto; padding: 0.25em 0.75em; list-style: none; border-radius: 0 0 0.5rem 0.5rem; 
+font-family: "Ubuntu Mono", monospace;}
 
 @media (min-width: 48em) { .site-nav ul { display: inline-block; } }
 
-.site-nav li { display: inline-block; font-size: 0.75em; }
+.site-nav li { display: inline-block; font-size: 1em; }
 
 .site-nav a { display: block; padding: 0.5em 0.75em; text-transform: uppercase; text-decoration: none; border: 1px solid; border-radius: 0.25rem; }
 
@@ -397,7 +400,7 @@ tr, td, th { vertical-align: middle; }
 
 .taxonomy-section + .taxonomy-section { margin-top: 2em; }
 
-.taxonomy-title { margin-bottom: 0.5em; font-family: "Source Sans Pro", sans-serif; }
+.taxonomy-title { margin-bottom: 0.5em; font-family: "Ubuntu Mono", monospace; }
 
 .taxonomy-title { font-size: 28px; }
 
@@ -433,7 +436,7 @@ tr, td, th { vertical-align: middle; }
 
 .toc-wrapper { display: inline-block; margin-bottom: 1.5em; border: 1px solid; border-radius: 0.25rem; }
 
-.toc-wrapper h2 { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin: 0; padding: 0.75rem 1rem; font-family: "Source Sans Pro", sans-serif; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; }
+.toc-wrapper h2 { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin: 0; padding: 0.75rem 1rem; font-family: "Ubuntu Mono", monospace; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; }
 
 .toc-wrapper h2 .toc-toggle-icon { margin-left: 1rem; -webkit-transition: -webkit-transform 350ms ease; transition: -webkit-transform 350ms ease; transition: transform 350ms ease; transition: transform 350ms ease, -webkit-transform 350ms ease; }
 
@@ -643,7 +646,7 @@ tr, td, th { vertical-align: middle; }
 
 /* ========================================================================== BUTTONS ========================================================================== */
 /* Default button ========================================================================== */
-.btn { /* default */ display: inline-block; margin-bottom: 0.25em; padding: 0.5em 1em; font-family: "Source Sans Pro", sans-serif; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; border-width: 0; border-radius: 0.25rem; cursor: pointer; /* fills width of parent container */ /* disabled */ /* extra large button */ /* large button */ /* small button */ }
+.btn { /* default */ display: inline-block; margin-bottom: 0.25em; padding: 0.5em 1em; font-family: "Ubuntu Mono", monospace; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; border-width: 0; border-radius: 0.25rem; cursor: pointer; /* fills width of parent container */ /* disabled */ /* extra large button */ /* large button */ /* small button */ }
 
 .btn .icon { margin-right: 0.5em; }
 

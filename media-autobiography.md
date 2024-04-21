@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Rise of a Videogame Zinester (A Media Autobiography)
+title: Rise of a Videogame Zinester
 image:
-  path: images/videogame-zinester.png
+  path: assets/images/videogame-zinester.png
 ---
 
-# Media Autobiography
+# A Media Autobiography

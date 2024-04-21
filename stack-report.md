@@ -2,7 +2,7 @@
 title: This Barbie is a VR Headset
 layout: page
 image:
-  path: images/headset.png
+  path: assets/images/headset.png
 ---
 # Stack Report on Mattel's View-Master (2015)
 

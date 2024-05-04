@@ -24,7 +24,7 @@ To present my project pitch to the class, I created two concepts for how the ins
 
 ---
 
-*Completed Fall 2023 for IMDM350 Advanced Digital Media Theory. Instructor: Dr. Jason Farman.*
+*Completed December 2023 for IMDM350 Advanced Digital Media Theory. Instructor: Dr. Jason Farman.*
 
 <style>
     iframe {

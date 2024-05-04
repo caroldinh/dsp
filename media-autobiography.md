@@ -12,4 +12,4 @@ Our first assignment of CINE419E was to create a "media autobiography" analyzing
 <iframe src="https://storymaps.arcgis.com/stories/c7c57d67ec0d44b7a8e632411c636200" width="100%" height="500px" frameborder="0" allowfullscreen allow="geolocation"></iframe>
 
 ---
-*Completed Spring 2024 for CINE419E:. Instructor: Stephanie Sapienza.*
+*Completed February 2024 for CINE419E:. Instructor: Stephanie Sapienza.*

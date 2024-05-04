@@ -857,3 +857,8 @@ figure.align-center figcaption { text-align: center; }
 .responsive-embed-1by1::before { padding-top: 100%; }
 
 /*# sourceMappingURL=main.css.map */
+
+.small {
+  font-size: 75%;
+  color: #595959;
+}

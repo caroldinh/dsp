@@ -13,4 +13,4 @@ After a month of taking inventory of materials in the MITH Lab, we were assigned
 
 ---
 
-*Completed Spring 2024 for ENGL388T: Archaeologies of Gaming and Electronic Literature. Instructor: Dr. Jeffrey Moro.*
+*Completed March 2024 for ENGL388T: Archaeologies of Gaming and Electronic Literature. Instructor: Dr. Jeffrey Moro.*

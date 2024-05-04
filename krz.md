@@ -1,5 +1,5 @@
 ---
-title: Performance & The Notation of Memory in Kentucky Route Zero
+title: "A Reckoning: Performance, Notation, and Memory in Kentucky Route Zero"
 layout: page
 image:
   path: assets/images/krz.png
@@ -11,7 +11,7 @@ In ENGL388T, we played *Kentucky Route Zero,* a magical realist video game reson
 
 ---
 
-*Completed Spring 2024 for ENGL388T: Archaeologies of Gaming and Electronic Literature. Instructor: Dr. Jeffrey Moro.*
+*Completed April 2024 for ENGL388T: Archaeologies of Gaming and Electronic Literature. Instructor: Dr. Jeffrey Moro.*
 
 
 <style>

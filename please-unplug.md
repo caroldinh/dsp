@@ -5,7 +5,7 @@ image:
   path: assets/images/pls-unplug.png
 ---
 
-**PLEASE UNPLUG THIS INSTALLATION WHEN NOT IN USE** is an interactive projection mapping installation about balancing institutional and individual responsibility for the climate crisis. I conceptualized this installation during IMDM350 and have submitted this proposal to the Immersive Media Design New Works Incubator to fully develop over the summer.
+**PLEASE UNPLUG THIS INSTALLATION WHEN NOT IN USE** is a proposed interactive projection mapping installation about balancing institutional and individual responsibility for the climate crisis. I conceptualized this installation during IMDM350 and have submitted this proposal to the Immersive Media Design New Works Incubator to fully develop over the summer.
 
 ## PROJECT PROPOSAL
 <iframe src="https://docs.google.com/document/d/e/2PACX-1vSK-eNy55pha2oWXqy0abHh5M3vMg2t9RPI7jt_qG-dQcjir3ObeO9W3D6ztZ9LkCwxmQkebrmMmnIs/pub?embedded=true"></iframe>
